@@ -19,6 +19,7 @@ module.exports = {
 
   // scope 类型（定义之后，可通过上下键选择）
   scopes: [
+    ['empty', ''],
     ['components', '组件相关'],
     ['hooks', 'hook 相关'],
     ['utils', 'utils 相关'],
@@ -29,7 +30,7 @@ module.exports = {
     ['other', '其他修改']
   ].map(([value, description]) => {
     return {
-      value,
+      value: value === 'empty' ? '' : value,
       name: `${value.padEnd(30)} (${description})`
     }
   }),
