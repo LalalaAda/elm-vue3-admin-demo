@@ -19,7 +19,6 @@ module.exports = {
 
   // scope 类型（定义之后，可通过上下键选择）
   scopes: [
-    ['empty', '空'],
     ['components', '组件相关'],
     ['hooks', 'hook 相关'],
     ['utils', 'utils 相关'],

@@ -33,7 +33,6 @@ export function getCacheThemeCssColorsObj() {
 }
 
 async function replaceStyleVariables(colors: string[]) {
-  console.log(colors)
   const el = document.documentElement
   elmCssVarList.forEach((item, index) => {
     el.style.setProperty(item, colors[index])
