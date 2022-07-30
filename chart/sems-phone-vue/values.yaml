@@ -1,0 +1,50 @@
+# Default values for choerodon-front.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  #repository: registry.choerodon.com.cn/choerodon/choerodon-front
+  # 在此处填写镜像地址
+  repository: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecret:
+  enable: true
+  name: tone-docker-secret
+
+logs:
+  parser: poros-front
+
+service:
+  enabled: true
+  port: 80
+  type: ClusterIP
+  name: sems-phone-vue
+
+env:
+  open:
+    API_HOST: http://poros.getech.cn
+    WEBSOCKET_SERVER: ws://ws.example.com
+    FILE_SERVER: http://minio.example.com
+    COOKIE_SERVER: http://poros.getech.cn
+    DEVOPS_HOST: ws://devops.poros.getech.cn
+    BUZZ_WEBSOCKET_URL: ws://buzz.example.com
+    CLIENT_ID: sems-phone-vue
+    HTTP: http
+    LOCAL: false
+    CUSTOM_THEME_COLOR: undefined
+
+    
+resources: 
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources,such as Minikube. If you do want to specify resources,uncomment the following
+  # lines,adjust them as necessary,and remove the curly braces after 'resources:'.
+  limits:
+    # cpu: 100m
+    # memory: 2Gi
+  requests:
+    # cpu: 100m
+    # memory: 1Gi
