@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.0.3
   '@commitlint/config-conventional': ^17.0.3
+  '@ctrl/tinycolor': ^3.4.1
   '@iconify/iconify': ^2.2.1
   '@iconify/json': ^2.1.77
   '@types/crypto-js': ^4.1.1
@@ -25,7 +26,7 @@ specifiers:
   cz-customizable: ^6.9.1
   dayjs: ^1.11.3
   dotenv: ^16.0.1
-  element-plus: ^2.2.9
+  element-plus: ^2.2.11
   eslint: ^8.19.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.2.1
@@ -74,6 +75,7 @@ specifiers:
   vue-tsc: ^0.34.17
 
 dependencies:
+  '@ctrl/tinycolor': 3.4.1
   '@iconify/iconify': 2.2.1
   '@vueuse/core': 9.0.2_vue@3.2.37
   crypto-js: 4.1.1

@@ -16,7 +16,7 @@
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
 
-  <el-button type="button" @click="count++">count is: {{ count }}</el-button>
+  <el-button type="primary" @click="count++">count is: {{ count }}</el-button>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
@@ -29,10 +29,26 @@
       :label="item.label"
     />
   </el-select>
+  <el-row>
+    <el-button type="default" @click="toggleDarkMode">
+      {{ darkMode }}
+    </el-button>
+  </el-row>
+  <el-select v-model="color">
+    <el-option v-for="item in presetPrimaryColors" :key="item" :value="item" :label="item" />
+  </el-select>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { useAppStore } from '/@/store/modules/app'
+import { ThemeEnum } from '/@/enums/appEnum'
+import { primaryColor } from '/@/tools/theme/generateColors'
+import { ProjectConfig } from '/#/config'
+import { PROJ_CFG_KEY } from '/@/enums/storgeEnum'
+import { Persistent } from '/@/utils/storge/persistent'
+import { presetPrimaryColors } from '/@/tools/theme/colors'
+import { updateDarkTheme, changeTheme } from '/@/tools/initAppConfig'
 
 const selectVal = ref('')
 const selectOptions = [
@@ -45,6 +61,24 @@ const selectOptions = [
 
 defineProps<{ msg: string }>()
 const count = ref(0)
+
+const appStore = useAppStore()
+const darkMode = computed(() => appStore.$state.darkMode || ThemeEnum.LIGHT)
+function toggleDarkMode() {
+  const mode = darkMode.value === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK
+  updateDarkTheme(mode)
+  appStore.setDarkMode(mode)
+}
+
+let projCfg: ProjectConfig = Persistent.getLocal(PROJ_CFG_KEY) as ProjectConfig
+const { themeColor } = projCfg
+// color-picker组件有bug 待element修复
+const color = ref(`${themeColor || primaryColor}`)
+
+watch(color, (val) => {
+  console.log(val)
+  changeTheme(val, darkMode.value)
+})
 </script>
 
 <style scoped>

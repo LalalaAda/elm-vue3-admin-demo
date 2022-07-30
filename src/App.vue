@@ -17,7 +17,7 @@ const locale = elmComputedCLocale.value as Language
 </script>
 
 <template>
-  <el-config-provider :size="elmSize" :z-inde="elmZIndex" :locale="locale">
+  <el-config-provider :size="elmSize" :z-index="elmZIndex" :locale="locale">
     <HelloWorld :msg="hello" />
   </el-config-provider>
 </template>
@@ -28,6 +28,5 @@ const locale = elmComputedCLocale.value as Language
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 </style>

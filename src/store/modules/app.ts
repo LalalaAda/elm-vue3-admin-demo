@@ -28,8 +28,8 @@ export const useAppStore = defineStore({
     getPageLoading(): boolean {
       return this.pageLoading
     },
-    getDarkMode(): ThemeEnum | string {
-      return this.darkMode || localStorage.getItem(APP_DARK_MODE_KEY_) || 'light'
+    getDarkMode(): ThemeEnum {
+      return this.darkMode || (localStorage.getItem(APP_DARK_MODE_KEY_) as ThemeEnum) || 'light'
     },
     getProjectConfig(): ProjectConfig {
       return this.projectConfig || ({} as ProjectConfig)
@@ -45,7 +45,7 @@ export const useAppStore = defineStore({
     },
     setProjectConfig(config: Partial<ProjectConfig>): void {
       this.projectConfig = deepMerge(this.projectConfig || {}, config)
-      Persistent.setLocal(PROJ_CFG_KEY, this.projectConfig)
+      Persistent.setLocal(PROJ_CFG_KEY, this.projectConfig, true)
     },
 
     async resetAllState() {

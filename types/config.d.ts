@@ -30,4 +30,10 @@ export interface ProjectConfig {
   permissionStorageType: StorageTypeEnum
   // 自定义的错误处理
   useErrorHandle: boolean
+  // Website gray mode, open for possible mourning dates
+  grayMode: boolean
+  // Whether to turn on the color weak mode
+  colorWeak: boolean
+  // Theme color
+  themeColor: string
 }
