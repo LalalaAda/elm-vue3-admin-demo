@@ -5,7 +5,6 @@ import legacy from '@vitejs/plugin-legacy' //使用它来提供对旧版本浏�
 
 import purgeIcons from 'vite-plugin-purge-icons' // 高效的使用Iconify中所有的图标
 import VitePluginCertificate from 'vite-plugin-mkcert' // 使用 mkcert 为 vite https 开发服务提供证书支持
-import vueSetupExtend from 'vite-plugin-vue-setup-extend' // 使 vue 脚本设置语法支持 name 属性。<script lang="ts" setup name="App"></script>
 
 // 饿了么的自动按需加载
 import AutoImport from 'unplugin-auto-import/vite'
@@ -31,7 +30,6 @@ export function createVitePlugin(viteEnv: ViteEnv, isBuild: boolean) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     vue(),
     vueJsx(),
-    vueSetupExtend(),
     VitePluginCertificate({
       source: 'coding'
     }),
