@@ -64,3 +64,14 @@ export function useLocale() {
     elmComputedCLocale
   }
 }
+
+export function useI18n() {
+  const { t } = i18n.global
+  // 写这个方法主要是 提供给 i18n-ally插件 自动补全
+  const tfn = (key: string): string => {
+    return t(key)
+  }
+  return {
+    t: tfn
+  }
+}

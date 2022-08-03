@@ -49,14 +49,16 @@ import { PROJ_CFG_KEY } from '/@/enums/storgeEnum'
 import { Persistent } from '/@/utils/storge/persistent'
 import { presetPrimaryColors } from '/@/tools/theme/colors'
 import { updateDarkTheme, changeTheme } from '/@/tools/initAppConfig'
+import { useI18n } from '/@/i18n/useLocale'
+const { t } = useI18n()
 
 const selectVal = ref('')
 const selectOptions = [
-  { value: 0, label: 'n0', id: 0 },
-  { value: 1, label: 'n1', id: 1 },
-  { value: 2, label: 'n2', id: 2 },
-  { value: 3, label: 'n3', id: 3 },
-  { value: 4, label: 'n4', id: 4 }
+  { value: 0, label: t('common.okText'), id: 0 },
+  { value: 1, label: t('router.errorPage'), id: 1 },
+  { value: 2, label: t('router.404'), id: 2 },
+  { value: 3, label: t('common.resetText'), id: 3 },
+  { value: 4, label: t('common.back'), id: 4 }
 ]
 
 defineProps<{ msg: string }>()

@@ -22,7 +22,7 @@ export function genMessage(langModuleMap: Record<string, Record<string, any>>, p
   const obj: Recordable = {}
 
   Object.keys(langModuleMap).forEach((key) => {
-    const module = langModuleMap[key]
+    const module = langModuleMap[key].default
     let moduleFileName = key.replace(`./${prefix}/`, '').replace(/^\.\//, '')
     const lastIndex = moduleFileName.lastIndexOf('.')
     moduleFileName = moduleFileName.substring(0, lastIndex)
